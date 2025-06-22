@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('dosen', function (Blueprint $table) {
             $table->id();
+            $table->string('nidn')->unique();
+            $table->string('nama');
+            $table->string('tmp_lahir');
+            $table->date('tgl_lahir');
+            $table->string('jk', 1);
+            $table->foreignId('prodi_id')->constrained('prodi');
             $table->timestamps();
         });
     }

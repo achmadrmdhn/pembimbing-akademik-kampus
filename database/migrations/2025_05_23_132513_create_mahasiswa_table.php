@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
+            $table->string('nim')->unique();
+            $table->string('nama');
+            $table->string('tmp_lahir');
+            $table->date('tgl_lahir');
+            $table->float('ipk', 3, 2);
+            $table->foreignId('rombel_id')->constrained('rombongan_belajar')->onDelete('cascade');
+            $table->foreignId('prodi_id')->constrained('prodi')->onDelete('cascade');
             $table->timestamps();
         });
     }
